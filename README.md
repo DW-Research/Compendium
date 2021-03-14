@@ -1,3 +1,6 @@
+![](name-of-giphy.gif)
+
+
 # Compendium: In Progress - More details to follow
 Compendium:  A concise but detailed collection of Scripts, Reverse Shells and Commands for Offensive Security. 
 
