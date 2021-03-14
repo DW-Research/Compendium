@@ -1,4 +1,4 @@
-![](name-of-giphy.gif)
+![](W4key.gif)
 
 
 # Compendium: In Progress - More details to follow
