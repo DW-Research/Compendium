@@ -1,7 +1,12 @@
-# Compendium
+# Compendium: In Progress - More details to follow
 Compendium:  A concise but detailed collection of Scripts, Reverse Shells and Commands for Offensive Security. 
 
-# In Progress - More details to follow 
+## Favourites - Most used examples 
+
+File transfers - Cooming soon
+PTY Shells - Coming soon 
+commands - Coming Soon
+
 
 ## Meterpreter Shells
 
