@@ -261,6 +261,14 @@ msf>exploit -j
 ```
 The -j option is to keep all the connected session in the background.  
 
+#Find SUID BIT
+```
+find / -perm -4000 2>/dev/null
+```
+#FIND GUID Bit
+```
+find / -perm -2000 2>/dev/null
+```
 
 # References
 
